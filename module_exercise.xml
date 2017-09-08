@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_exercise" default="compile.module.exercise">
+  <dirname property="module.exercise.basedir" file="${ant.file.module_exercise}"/>
+  
+  <property name="module.jdk.home.exercise" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.exercise" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.exercise" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.exercise" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="exercise.output.dir" value="${module.exercise.basedir}/out/production/exercise"/>
+  <property name="exercise.testoutput.dir" value="${module.exercise.basedir}/out/test/exercise"/>
+  
+  <path id="exercise.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="exercise.module.production.classpath">
+    <path refid="${module.jdk.classpath.exercise}"/>
+  </path>
+  
+  <path id="exercise.runtime.production.module.classpath">
+    <pathelement location="${exercise.output.dir}"/>
+  </path>
+  
+  <path id="exercise.module.classpath">
+    <path refid="${module.jdk.classpath.exercise}"/>
+    <pathelement location="${exercise.output.dir}"/>
+  </path>
+  
+  <path id="exercise.runtime.module.classpath">
+    <pathelement location="${exercise.testoutput.dir}"/>
+    <pathelement location="${exercise.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.exercise">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.exercise">
+    <patternset refid="excluded.from.module.exercise"/>
+  </patternset>
+  
+  <path id="exercise.module.sourcepath">
+    <dirset dir="${module.exercise.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.exercise" depends="compile.module.exercise.production,compile.module.exercise.tests" description="Compile module exercise"/>
+  
+  <target name="compile.module.exercise.production" depends="register.custom.compilers" description="Compile module exercise; production classes">
+    <mkdir dir="${exercise.output.dir}"/>
+    <javac2 destdir="${exercise.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.exercise}/javac">
+      <compilerarg line="${compiler.args.exercise}"/>
+      <bootclasspath refid="exercise.module.bootclasspath"/>
+      <classpath refid="exercise.module.production.classpath"/>
+      <src refid="exercise.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.exercise"/>
+    </javac2>
+    
+    <copy todir="${exercise.output.dir}">
+      <fileset dir="${module.exercise.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.exercise.tests" depends="register.custom.compilers,compile.module.exercise.production" description="compile module exercise; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.exercise" description="cleanup module">
+    <delete dir="${exercise.output.dir}"/>
+    <delete dir="${exercise.testoutput.dir}"/>
+  </target>
+</project>
