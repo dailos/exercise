@@ -1,6 +1,6 @@
 package exercise.insured;
 
-public abstract class Property extends Insured {
+public abstract class Property implements Insurable {
 
     private double area;
 

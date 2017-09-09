@@ -12,9 +12,9 @@ public class Main {
     public static void main(String[] args) {
 
         Product product = ProductFactory.getProduct(args[0]);
-        House insured = new House(Double.parseDouble(args[1]));
+        House house = new House(Double.parseDouble(args[1]));
 
-        Household policy = new Household(insured, product);
+        Household policy = new Household(house, product);
 
         System.out.print(policy.getPrice() + " Euros");
     }
