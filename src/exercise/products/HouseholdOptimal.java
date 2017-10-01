@@ -1,14 +1,27 @@
 package exercise.products;
 
+import exercise.lib.Id;
+import exercise.lib.Money;
+
 import java.math.BigDecimal;
 
 public class HouseholdOptimal implements Product {
 
-    final private static BigDecimal value = new BigDecimal("700");
+    private static Id productId = new Id("HouseHoldOptimalId");
+
+    final private static Money value = new Money(new BigDecimal("700"), "EU");
+
 
     @Override
-    public BigDecimal getValue() {
-        return this.value;
+    public Id getProductId()
+    {
+        return productId;
+    }
+
+    @Override
+    public Money getValue()
+    {
+        return value;
     }
 
 }

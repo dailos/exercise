@@ -7,4 +7,6 @@ final public class House extends Property {
         super(area);
     }
 
+
+
 }

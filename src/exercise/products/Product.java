@@ -1,8 +1,12 @@
 package exercise.products;
 
-import java.math.BigDecimal;
+import exercise.lib.Id;
+import exercise.lib.Money;
+
 
 public interface Product {
 
-    BigDecimal getValue();
+    Id getProductId();
+
+    Money getValue();
 }

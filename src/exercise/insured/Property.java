@@ -1,8 +1,11 @@
 package exercise.insured;
 
+import exercise.lib.Id;
+
 public abstract class Property implements Insurable {
 
     private double area;
+    private Id insuredId;
 
     private void check(double area)
     {
@@ -15,10 +18,17 @@ public abstract class Property implements Insurable {
     {
         this.check(area);
         this.area = area;
+        this.insuredId = new Id();
     }
 
     public double getArea()
     {
         return this.area;
     }
+
+    public Id getInsurableId()
+    {
+        return this.insuredId;
+    }
+
 }
