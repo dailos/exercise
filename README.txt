@@ -1,5 +1,3 @@
-No test yet
-
 3 subpackages:
 
 * insured:
