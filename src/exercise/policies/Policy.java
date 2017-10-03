@@ -1,10 +1,16 @@
 package exercise.policies;
 
 import exercise.lib.Id;
-import java.math.BigDecimal;
+import exercise.lib.Money;
+import exercise.products.Product;
+
 
 interface Policy {
+
     Id getPolicyId();
 
-    BigDecimal getPrice();
+    Product getProduct();
+
+    //Total price of the policy
+    Money getPrice();
 }

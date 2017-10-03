@@ -4,18 +4,17 @@ public class Id {
 
     private String id;
 
-   public Id()
+    Id()
    {
-       this.id = "randomIdBasedOnType";
+       id = "randomIdBasedOnType";
    }
 
-   public Id(String id)
+    public Id(String id)
    {
        this.id = id;
    }
 
-   public String toString()
-   {
-       return this.id;
-   }
+    public String toString() {
+        return id;
+    }
 }

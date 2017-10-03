@@ -13,9 +13,9 @@ public class Main {
 
         Product product = ProductFactory.getProduct(args[0]);
         House house = new House(Double.parseDouble(args[1]));
-
         Household policy = new Household(house, product);
 
-        System.out.print(policy.getPrice() + " Euros");
+
+        System.out.print(policy.getPrice().toString());
     }
 }

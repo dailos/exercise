@@ -6,9 +6,6 @@ public class ProductFactory {
     private static final String productOptimal = "optimal";
 
     public static Product getProduct(String productType){
-        if(productType == null){
-            return null;
-        }
         if(productType.equalsIgnoreCase(productCompact)){
             return new HouseholdCompact();
 
@@ -16,6 +13,6 @@ public class ProductFactory {
             return new HouseholdOptimal();
 
         }
-        return null;
+        throw new IllegalArgumentException();
     }
 }

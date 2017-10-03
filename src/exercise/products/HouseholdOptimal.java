@@ -3,14 +3,12 @@ package exercise.products;
 import exercise.lib.Id;
 import exercise.lib.Money;
 
-import java.math.BigDecimal;
 
 public class HouseholdOptimal implements Product {
 
     private static Id productId = new Id("HouseHoldOptimalId");
 
-    final private static Money value = new Money(new BigDecimal("700"), "EU");
-
+    final private static Money pricePerMeter = new Money(700, "EU");
 
     @Override
     public Id getProductId()
@@ -19,9 +17,8 @@ public class HouseholdOptimal implements Product {
     }
 
     @Override
-    public Money getValue()
+    public Money getPrices()
     {
-        return value;
+        return pricePerMeter;
     }
-
 }

@@ -8,5 +8,8 @@ public interface Product {
 
     Id getProductId();
 
-    Money getValue();
+    //Prices represent the value of the parameters the policy
+    // needs to calculate the price
+    //In this example it returns only the pricePerMeter.
+    Money getPrices();
 }

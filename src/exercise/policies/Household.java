@@ -2,14 +2,13 @@ package exercise.policies;
 
 import exercise.insured.Property;
 import exercise.lib.Id;
+import exercise.lib.Money;
 import exercise.products.Product;
-
-import java.math.BigDecimal;
 
 public class Household implements Policy {
 
-    Property property;
-    Product product;
+    private Property property;
+    private Product product;
     private Id policyId;
 
     public Household(Property property, Product product)
@@ -17,10 +16,10 @@ public class Household implements Policy {
         super();
         this.property = property;
         this.product = product;
-        this.policyId = new Id("policyId");
+        this.policyId = new Id("HouseHoldPolicyId");
     }
 
-    public Household(Property property)
+    Household(Property property)
     {
         super();
         this.property = property;
@@ -34,11 +33,16 @@ public class Household implements Policy {
     @Override
     public Id getPolicyId()
     {
-        return this.policyId;
+        return policyId;
     }
 
     @Override
-    public BigDecimal getPrice() {
-        return BigDecimal.valueOf(this.property.getArea()).multiply(this.product.getValue().getAmount());
+    public Product getProduct() {
+        return product;
+    }
+
+    @Override
+    public Money getPrice() {
+        return product.getPrices().multiply(property.getArea());
     }
 }
