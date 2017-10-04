@@ -17,15 +17,7 @@ class HouseholdTest {
     @BeforeEach
     void setUp() {
         household = new Household(new House(100), new HouseholdCompact());
-    }
-
-    @Test
-    void setProduct() {
-        Household policy = new Household(new House(50));
-        HouseholdOptimal product = new HouseholdOptimal();
-        policy.setProduct(product);
-        assertEquals("HouseHoldOptimalId", policy.getProduct().getProductId().toString());
-    }
+    }    
 
     @Test
     void getPolicyId() {
