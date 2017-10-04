@@ -17,18 +17,7 @@ public class Household implements Policy {
         this.property = property;
         this.product = product;
         this.policyId = new Id("HouseHoldPolicyId");
-    }
-
-    Household(Property property)
-    {
-        super();
-        this.property = property;
-    }
-
-    public void setProduct(Product product)
-    {
-        this.product = product;
-    }
+    }        
 
     @Override
     public Id getPolicyId()
